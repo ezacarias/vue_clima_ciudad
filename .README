@@ -2,3 +2,4 @@
 165.- Creando el proyecto y obteniendo un Api key
 -OpenWeater
 -npm create vite@latest clima-vue -- --template vue
+166.- Creando el formulario principal

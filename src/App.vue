@@ -3,6 +3,7 @@ import Formulario from './components/Formulario.vue';
 import useClima from './composables/useClima';
 
 const { obtenerClima } = useClima()
+console.log(import.meta.env)
 </script>
 
 

@@ -24,5 +24,3 @@ import useClima from '../composables/useClima';
 
 
  
-
-

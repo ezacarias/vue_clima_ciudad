@@ -2,8 +2,9 @@
     import Formulario from './components/Formulario.vue'
     import Clima from './components/Clima.vue';
     import Spinner from './components/Spinner.vue';
+    import Alerta from './components/Alerta.vue';
     import useClima from './composables/useClima';
-    const { obtenerClima,clima,mostrarClima,cargando } = useClima();
+    const { obtenerClima,clima,mostrarClima,cargando,error } = useClima();
 </script>
 
 <template>
@@ -13,6 +14,9 @@
             @obtener-climna="obtenerClima"
         />
         <Spinner v-if="cargando"/>
+        <Alerta v-if="error">
+            {{ error }}
+        </Alerta>
         <clima
         v-if="mostrarClima"
         :clima="clima"

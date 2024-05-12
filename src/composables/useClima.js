@@ -17,7 +17,7 @@ export default function useClima(){
             const dataClima= await axios(urlClima);
             const { data: resultado } = dataClima;
             clima.value= resultado;
-            console.log(resultado.main.temp_min);
+            console.log(resultado);
         } catch (error) {
             console.log(error);
         }
@@ -31,10 +31,14 @@ export default function useClima(){
         return Object.values(clima.value).length > 0;
     });
 
+
+    const formatearTemperatura=temperatura => parseInt(temperatura - 273.15) ;
+
     return{
         obtenerClima,
         clima,
         mostrarClima,
+        formatearTemperatura,
     };
 
 }

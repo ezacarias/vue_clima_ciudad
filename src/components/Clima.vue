@@ -1,18 +1,28 @@
 <script setup>
-const emit = defineEmits(['clima']);
+import useClima from '../composables/useClima';
+    defineProps({
+        clima:{
+            type:Object,
+            required:true,
+        }
+    })
+    const { formatearTemperatura } = useClima();
 </script>
 
 <template>
     <div class="resultado">
-        <h1>Clima de: </h1>
-        <p class="actual"></p>
+        <h1>Clima de: {{ clima.name }}</h1>
+        <p class="actual"> {{ formatearTemperatura(clima.main.temp) }}&deg;C</p>
         <div class="temperaturas">
-            <p>Min: <span>&deg;C</span></p>
-            <p>Max: <span>&deg;C</span></p>
+            <p>Min: <span> {{ formatearTemperatura(clima.main.temp_min) }}&deg;C</span></p>
+            <p>Max: <span> {{ formatearTemperatura(clima.main.temp_max) }}&deg;C</span></p>
 
         </div>
     </div>
 </template>
 
+
+
+ 
 
 

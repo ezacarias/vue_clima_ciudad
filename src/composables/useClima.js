@@ -3,9 +3,14 @@ import axios from "axios";
 export default function useClima(){
     const clima = ref ({});
 
+    const cargando = ref (false);
+
+
     const obtenerClima= async({ ciudad, pais})=>{
         //importar apikey
         const key =import.meta.env.VITE_API_KEY;
+        cargando.value= true;
+        clima.value={};
         try {
             //obtener la lat, lngt
             const url =`http://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}
@@ -17,10 +22,9 @@ export default function useClima(){
             const dataClima= await axios(urlClima);
             const { data: resultado } = dataClima;
             clima.value= resultado;
-            console.log(resultado);
         } catch (error) {
             console.log(error);
-        }
+        }finally{ cargando.value= false}
         
         
         //obtener el clima
@@ -39,6 +43,7 @@ export default function useClima(){
         clima,
         mostrarClima,
         formatearTemperatura,
+        cargando,
     };
 
 }
